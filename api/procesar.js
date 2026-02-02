@@ -3,8 +3,8 @@ export default function handler(req, res) {
 
   if (nombre.toLowerCase() === "error") {
     return res.status(500).json({
-      error: "Error interno simulado",
-      detalle: "Se recibió la palabra clave de fallo"
+      error: "Error recibido",
+      detalle: "Se recibió la palabra de fallo"
     });
   }
   
