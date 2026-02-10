@@ -66,3 +66,24 @@ test("procesar maneja nombre ausente", () => {
   assert.equal(res.statusCode, 200);
   assert.ok(res.body.resultado.includes("ANÓNIMO"));
 });
+
+test("Reto 5: debe retornar estado 500 cuando el nombre es 'error'", () => {
+  const req = { query: { nombre: "error" } };
+  const res = {
+    statusCode: null,
+    body: null,
+    status(code) { 
+      this.statusCode = code; 
+      return this; 
+    },
+    json(payload) { 
+      this.body = payload; 
+      return this; 
+    }
+  };
+
+  handler(req, res);
+
+  assert.equal(res.statusCode, 500);
+  assert.equal(res.body.error, "Falla simulada del sistema");
+});
